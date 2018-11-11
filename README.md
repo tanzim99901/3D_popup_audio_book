@@ -14,10 +14,12 @@ Components:
 How it works?
 
 Reed Switches and Magnets:
+
 Reed switches are switches that are activated in presence of a magnetic field. Each page contains one reed switch and one coin magnet hidden inside the folds. Whenever a page is turned, the magnet activates the corresponding switch, which is then read by the Arduino Nano. 
 One end of each reed switch are shorted together and connected to 5V of the Arduino Nano. The other end of each reed switch is connected to Arduino Nano’s GND through a 10K resistor each. Reading is taken from the other end of the resistor for each reed switch by connecting it to a digital pin of Arduino Nano. So, whenever a page is turned, that corresponding reed switch is activated, which can be detected by the Arduino Nano.
 
 Audio playback:
+
 Audio playback is achieved using the TMRpcm library to play prerecorded .wav files stored in the SD card. The MicroSD card module and Arduino NANO connections are as follows:
 SD CS --> Arduino D10
 SD SCK --> Arduino D13
