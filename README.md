@@ -21,19 +21,33 @@ One end of each reed switch are shorted together and connected to 5V of the Ardu
 Audio playback:
 
 Audio playback is achieved using the TMRpcm library to play prerecorded .wav files stored in the SD card. The MicroSD card module and Arduino NANO connections are as follows:
+
 SD CS --> Arduino D10
+
 SD SCK --> Arduino D13
+
 SD MOSI --> Arduino D11
+
 SD MISO --> Arduino D12
+
 SD VCC --> Arduino 5V
+
 SD GND --> Arduino GND
+
 Whenever a reed switch is activated, the corresponding .wav file is played from the SD card. This audio is then amplified using a “PAM8403 2 Channel USB Power Audio Amplifier Module”. It supports two speakers, but only one was used for this project. The connections are as follows:
+
 Amp R(+) --> Speaker (+)
+
 Amp R(-) --> Speaker (-)
+
 Amp 5V(+) --> Battery (+)
+
 Amp GND(-) --> Battery (-) and Arduino GND
+
 Amp R --> Arduino D9
+
 Amp (common) --> Battery (-) and Arduino GND
+
 Two separate batteries are used, one for the Arduino Nano and one for the audio amplifier.
 
 
