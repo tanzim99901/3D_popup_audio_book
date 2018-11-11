@@ -50,4 +50,6 @@ Amp (common) --> Battery (-) and Arduino GND
 
 Two separate batteries are used, one for the Arduino Nano and one for the audio amplifier.
 
+Currently, 5 reed switches and 5 pages of the book have been used for this project. The popup book design was done by a third party. 
+
 
