@@ -124,7 +124,7 @@ void run_music()
   {
     tmrpcm.setVolume(6);
     tmrpcm.quality(1);
-    tmrpcm.play("ek.wav");
+    tmrpcm.play("one.wav");   // .wav file to be played for page 1
     p1 = 0;
     p2 = 1;
     p3 = 1;
@@ -137,7 +137,7 @@ void run_music()
   {
     tmrpcm.setVolume(6);
     tmrpcm.quality(1);
-    tmrpcm.play("dui.wav");
+    tmrpcm.play("two.wav");   // .wav file to be played for page 2
     p2 = 0;
     p1 = 1;
     p3 = 1;
@@ -150,7 +150,7 @@ void run_music()
   {
     tmrpcm.setVolume(6);
     tmrpcm.quality(1);
-    tmrpcm.play("tin.wav");
+    tmrpcm.play("three.wav");   // .wav file to be played for page 3
     p3 = 0;
     p2 = 1;
     p1 = 1;
@@ -163,7 +163,7 @@ void run_music()
   {
     tmrpcm.setVolume(6);
     tmrpcm.quality(1);
-    tmrpcm.play("car.wav");
+    tmrpcm.play("four.wav");   // .wav file to be played for page 4
     p4 = 0;
     p2 = 1;
     p1 = 1;
@@ -176,7 +176,7 @@ void run_music()
   {
     tmrpcm.setVolume(6);
     tmrpcm.quality(1);
-    tmrpcm.play("pac.wav");
+    tmrpcm.play("five.wav");   // .wav file to be played for page 5
     p5 = 0;
     p2 = 1;
     p1 = 1;
