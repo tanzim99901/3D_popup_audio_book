@@ -8,10 +8,10 @@
 #define switch4 A3
 #define switch5 A4
 
-#include <TMRpcm.h>           //  also need to include this library...
-#include <SPI.h>
+#include <TMRpcm.h>           //  audio playback library
+#include <SPI.h>              // SPI Communication library
 
-TMRpcm tmrpcm;   // create an object for use in this sketch
+TMRpcm tmrpcm;                // create an object for use in this sketch
 
 char c;
 
@@ -22,7 +22,7 @@ boolean p3 = 1;
 boolean p4 = 1;
 boolean p5 = 1;
 
-boolean s1, s2, s3, s4, s5; // switch state variables
+boolean s1, s2, s3, s4, s5;     // switch state variables
 
 unsigned long time = 0;
 
@@ -42,11 +42,10 @@ void setup() {
   pinMode(4, OUTPUT);
   pinMode(3, OUTPUT);
   pinMode(2, OUTPUT);
-  //pinMode(7, OUTPUT);
 
-  tmrpcm.speakerPin = 9; //5,6,11 or 46 on Mega, 9 on Uno, Nano, etc
-  //Complimentary Output or Dual Speakers:
-  //pinMode(10,OUTPUT); Pin pairs: 9,10 Mega: 5-2,6-7,11-12,46-45
+  tmrpcm.speakerPin = 9; // single-channel audio output; speaker connected to digital pin 9
+  //For Complimentary Output or Dual Speakers:
+  //Pin pairs: 9,10 Mega: 5-2,6-7,11-12,46-45
 
   Serial.begin(9600);
   delay(1000);
@@ -61,26 +60,9 @@ void setup() {
     digitalWrite(8, HIGH);
     digitalWrite(7, LOW);
   }
-  tmrpcm.setVolume(6);
-  tmrpcm.quality(1);
-  //tmrpcm.play("ek.wav");
-  //tmrpcm.play("raat.wav");
-  //tmrpcm.play("cricat.wav");
-  //tmrpcm.loop(1);
-  /*if (tmrpcm.isPlaying())
-    {
-    digitalWrite(7, HIGH);
-    //tmrpcm.setVolume(0);
-    //tmrpcm.stopPlayback();
-    //tmrpcm.disable();
-    //digitalWrite(9, LOW);
-    //Serial.println("DONE");
-    }
-    else digitalWrite(7, LOW);*/
-  //tmrpcm.play("music"); //the sound file "music" will play each time the arduino powers up, or is reset
+  tmrpcm.setVolume(6);    // modify volume
+  tmrpcm.quality(1);      // modify quality
 }
-
-
 
 void loop() {
   digitalWrite(6, LOW);
@@ -89,40 +71,11 @@ void loop() {
   digitalWrite(3, LOW);
   digitalWrite(2, LOW);
 
-  switch_state();
-  run_music();
-
-
-  //blink the LED manually to demonstrate music playback is independant of main loop
-  /*if(tmrpcm.isPlaying() && millis() - time > 50 ) {
-      digitalWrite(13,!digitalRead(13));
-      time = millis();
-    }else
-    if(millis() - time > 500){
-    digitalWrite(13,!digitalRead(13));
-    time = millis();
-    }
-
-
-    if(Serial.available()){
-    switch(Serial.read()){
-    case 'd': tmrpcm.play("furk.wav"); Serial.println("Playing FURK"); break;
-    case 'r': tmrpcm.play("at.wav"); Serial.println("Playing AT"); break;
-    case 'k': tmrpcm.play("ek.wav"); Serial.println("Playing EK"); break;
-    case 't': tmrpcm.play("sholo.wav"); Serial.println("Playing SHOLO"); break;
-    case 'p': tmrpcm.pause(); Serial.println("PAUSE/PLAY"); break;
-    case '?': if(tmrpcm.isPlaying()){ Serial.println("A wav file is being played");} break;
-    case 's': tmrpcm.stopPlayback(); Serial.println("STOP"); break;
-    case '0': tmrpcm.quality(0); Serial.println("Low Quality"); break;
-    case '1': tmrpcm.quality(1); Serial.println("High Quality"); break;
-    case '=': tmrpcm.volume(7); Serial.println("High Volume"); break;
-    case '-': tmrpcm.volume(6); Serial.println("Low Volume"); break;
-    default: break;
-    }
-    }*/
-
+  switch_state();   // read switch states
+  run_music();      // play music accordingly
 }
 
+// READ STATE OF THE REED SWITCHES
 void switch_state()
 {
   s1 = digitalRead(switch1);
@@ -130,6 +83,8 @@ void switch_state()
   s3 = digitalRead(switch3);
   s4 = digitalRead(switch4);
   s5 = digitalRead(switch5);
+
+  // serial debugging
   Serial.print(s1);
   Serial.print(" ");
   Serial.print(s2);
@@ -140,6 +95,7 @@ void switch_state()
   Serial.print(" ");
   Serial.print(s5);
   Serial.println(" ");
+
   digitalWrite(6, s1);
   digitalWrite(5, s2);
   digitalWrite(4, s3);
@@ -228,12 +184,5 @@ void run_music()
     p3 = 1;
     delay(200);
   }
-
-  //else stop_play();
-
-  /*if (!tmrpcm.isPlaying())
-    {
-    stop_play();
-    }*/
 }
 
